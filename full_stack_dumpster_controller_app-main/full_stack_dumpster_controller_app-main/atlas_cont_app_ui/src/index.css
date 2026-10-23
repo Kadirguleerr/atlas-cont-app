@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dashboard-bg: #06100c;
+  --color-card-bg: rgba(8, 32, 20, 0.55);
+  --color-card-border: rgba(16, 185, 129, 0.12);
+  --color-glass: rgba(6, 28, 18, 0.6);
+  --color-atlas-emerald: #10b981;
+  --color-atlas-teal: #14b8a6;
+  --color-atlas-cyan: #06b6d4;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(145deg, #04120a, #0a1628, #061510);
+    background-attachment: fixed;
+    color: #d1fae5;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #071a12;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #10b981, #059669);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #34d399, #10b981);
+  }
+}
+
+.leaflet-container {
+  background: #06100c !important;
+  border-radius: 12px;
+}
+
+.leaflet-control-zoom a {
+  background-color: rgba(8, 32, 20, 0.9) !important;
+  color: #d1fae5 !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+.container-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 11px;
+  color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.container-marker:hover {
+  transform: scale(1.2);
+}
+
+.container-marker.status-critical {
+  background: linear-gradient(135deg, #fb7185, #e11d48);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.5);
+  animation: pulse-critical 2s infinite;
+}
+
+.container-marker.status-warning {
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
+}
+
+.container-marker.status-normal {
+  background: linear-gradient(135deg, #34d399, #059669);
+  box-shadow: 0 0 15px rgba(5, 150, 105, 0.4);
+}
+
+.container-marker.status-empty {
+  background: linear-gradient(135deg, #6ee7b7, #10b981);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+@keyframes pulse-critical {
+  0%, 100% { box-shadow: 0 0 20px rgba(225, 29, 72, 0.5); }
+  50% { box-shadow: 0 0 35px rgba(225, 29, 72, 0.8); }
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(8, 32, 20, 0.65), rgba(6, 28, 18, 0.5));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(16, 185, 129, 0.05);
+}
+
+.fill-bar-track {
+  height: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fill-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gradient button base */
+.btn-gradient-primary {
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+.btn-gradient-primary:hover {
+  background: linear-gradient(135deg, #34d399, #2dd4bf);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Subtle glow animation for selected items */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.15); }
+  50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); }
+}

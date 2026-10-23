@@ -1,0 +1,40 @@
+# Atlas Çöp Konteyneri Takip Sistemi (Full Stack Dumpster Controller App)
+## 30 Günlük Geliştirme Günlüğü
+
+**1. Hafta: Planlama, Kurulum ve Backend Temelleri**
+1. Gün: Proje gereksinimlerinin belirlenmesi. Backend için NestJS, Frontend için React + Vite, Veritabanı için MongoDB, Harita için Leaflet kullanılmaya karar verildi ve mimari planlandı.
+2. Gün: Projenin monorepo klasör yapısının oluşturulması. NestJS (`atlas_cont_app_api`) ve Vite/React (`atlas_cont_app_ui`) iskeletlerinin projeye kurulması.
+3. Gün: Backend'de MongoDB bağlantısının `@nestjs/mongoose` ile kurulması ve `ConfigModule` kullanılarak ortam değişkenlerinin (dotenv) ayarlanması.
+4. Gün: Veritabanı şemasının oluşturulması. Konteynerler için Entity/Schema yapısının tanımlanması ve DTO'lar oluşturularak `class-validator` ile veri doğrulama kurallarının eklenmesi.
+5. Gün: NestJS tarafında Konteyner modeline ait CRUD (Oluşturma, Okuma, Güncelleme, Silme) işlemlerini yapacak Controller ve Service katmanlarının yazılması.
+6. Gün: Yazılan REST API uç noktalarının (endpoints) Postman aracılığıyla test edilmesi ve tespit edilen eksikliklerin giderilmesi.
+7. Gün: Kod tabanının düzenlenmesi, ESLint/Prettier konfigürasyonlarının yapılması ve versiyon kontrolü için projenin Git'e yüklenmesi.
+
+**2. Hafta: Frontend İskeleti ve Harita Entegrasyonu**
+8. Gün: React projesinde temel klasör yapısının (`components`, `pages`, `store`, `services`, `types`) oluşturulması. Tailwind CSS kurulumu ve yapılandırması.
+9. Gün: React Router Dom kullanılarak sayfa yönlendirmelerinin ayarlanması (`Dashboard.tsx`, `CreateContainer.tsx`). Temel `Header.tsx` bileşeninin kodlanması.
+10. Gün: Durum yönetimi (State Management) için Redux Toolkit (RTK) kurulumu. `store.ts` oluşturulması ve konteyner verilerini tutacak `containerSlice.ts` dosyasının yazılması.
+11. Gün: Backend ile haberleşmeyi sağlayacak Axios servis katmanının (`services/api.ts`) yazılması ve API'den veri çekme testlerinin yapılması.
+12. Gün: Harita entegrasyonu için React Leaflet kütüphanesinin projeye dahil edilmesi ve `ContainerMap.tsx` bileşeninin iskeletinin çıkarılması.
+13. Gün: Redux üzerinden backend'den alınan konteyner konum verilerinin harita üzerinde Marker (işaretçi) olarak render edilmesi.
+14. Gün: Harita üzerindeki Marker'lara tıklandığında açılacak popup içeriklerinin (Konteyner ID'si, doluluk oranı vb.) tasarlanması ve veri bağlamalarının yapılması.
+
+**3. Hafta: UI/UX Geliştirmeleri ve Bileşenler**
+15. Gün: Konteynerlerin harita dışında liste şeklinde de görülebilmesi için `ContainerList.tsx` bileşeninin kodlanması ve verilerin listelenmesi.
+16. Gün: Yeni bir konteyner eklemek için kullanılacak `CreateContainer.tsx` form sayfasının tasarlanması ve Tailwind ile stillendirilmesi.
+17. Gün: Ekleme formunun doğrulama (validation) işlemlerinin yapılması, Redux action'larının bağlanması ve API'ye POST isteği atarak yeni konteyner kayıt işleminin tamamlanması.
+18. Gün: Konteyner hakkında detaylı bilgi göstermek için `ContainerDetail.tsx` ve `ContainerFullModal.tsx` bileşenlerinin kodlanıp sisteme entegre edilmesi.
+19. Gün: Mevcut konteynerin durumunu (örneğin doluluk oranı) güncellemek ve silmek için UI butonlarının ve ilgili API PUT/DELETE bağlantılarının tamamlanması.
+20. Gün: Uygulamanın anasayfasında (Dashboard) genel durum özetini gösterecek `StatsPanel.tsx` (Toplam Konteyner, Kritik Doluluktaki Konteynerler vb.) bileşeninin yazılması.
+21. Gün: `dataFormat.ts` üzerinde veri manipülasyon işlemlerinin düzenlenmesi. Uygulama genelinde Yükleniyor (Loading) ve Hata (Error) durumları için UI geliştirmelerinin yapılması.
+
+**4. Hafta: İyileştirme, Optimizasyon ve Canlıya Hazırlık**
+22. Gün: Projedeki tüm bileşenlerin ve sayfaların Tailwind kullanılarak mobil uyumlu (Responsive) hale getirilmesi.
+23. Gün: API tarafında CORS ayarlarının yapılandırılması ve hata yönetimi (Exception Handling) senaryolarının frontend'deki hata gösterimleriyle uyumlu hale getirilmesi.
+24. Gün: Harita performans optimizasyonu. Aynı lokasyonda bulunabilecek veya çok sayıda olan işaretçiler için cluster/optimizasyon araştırmaları ve iyileştirmeler.
+25. Gün: `types/container.ts` dosyasının Backend'deki veri yapısıyla tam uyuştuğunun kontrolü. `oxlint` ve TypeScript (tsc) araçlarıyla tip hatalarının ve kod kokularının (code smells) giderilmesi.
+26. Gün: Projenin uçtan uca (E2E) test senaryolarının gözden geçirilmesi ve genel hata ayıklama (Debugging) işlemlerinin yapılması.
+27. Gün: Uygulamanın production (canlı ortam) için build işlemlerinin yapılması. Backend tarafında `nest build`, Frontend tarafında `vite build` komutlarıyla çıktıların alınması.
+28. Gün: Canlı ortam için çevre değişkenlerinin (Environment variables) yapılandırılması. .env dosyalarının ayarlanması ve dokümantasyon (README.md) güncellemelerinin yapılması.
+29. Gün: NestJS API'sinin ve MongoDB'nin bir sunucuya (örn: Render, Railway, VPS) yüklenip canlıya alınması. Vite/React uygulamasının (örn: Vercel, Netlify) deploy edilmesi.
+30. Gün: Uygulamanın canlı sunucular üzerinde çalışırlığının test edilmesi (Son kabuller). 30 günlük projenin tamamlanıp teslim aşamasına getirilmesi.
